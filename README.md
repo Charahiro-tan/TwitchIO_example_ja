@@ -23,7 +23,20 @@ Python3.9未満では動作しないと思います
   ┗ timer.py            一定時間ごとにコメントを送信する例
 ```
   
+### メッセージの送信について
+ほとんどのメソッドでメッセージを送信する時に
+```python
+await ctx.reply("...")
+```
+を使用していますが、普通に送信したい場合は以下のようにしてください
+```python
+# Contextの場合
+await ctx.send("...")
+# Messageの場合
+await message.channel.send("...")
+```
   
+
 ### I am...
 [Twitter](https://twitter.com/__Charahiro)  
 [Twitch](https://www.twitch.tv/charahiro_)
