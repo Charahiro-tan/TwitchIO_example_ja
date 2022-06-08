@@ -112,34 +112,16 @@ class DefaultCmds(commands.Cog):
         """
         if not ctx.author.is_mod:
             return
-        if not args:
-            return
+        if args:
+            user = args[0]
+        else:
+            user = ctx.message.tags.get("reply-parent-user-login")
+            if not user:
+                return
 
-        msg = await self.get_introduction(args[0])
+        msg = await self.get_introduction(user)
         if msg:
             await ctx.send(msg)
-
-    @commands.Cog.event(event="event_message")
-    async def reply_so(self, message: Message) -> None:
-        """
-        紹介コマンド2
-        紹介したい人にリプライで!soを打つとその人の紹介をする
-
-        次バージョンではcommands.commandがスレッド内でも呼び出されるようになるらしいので
-        上のコマンドと一緒にできるかも
-        """
-        if message.echo or not message.author.is_mod:
-            return
-
-        user = message.tags.get("reply-parent-user-login")
-        if not user:
-            return
-
-        message_split = message.content.split()
-        if f"{self.bot._prefix}so" in message_split:
-            msg = await self.get_introduction(user)
-            if msg:
-                await message.channel.send(msg)
 
     async def get_introduction(self, user: str) -> Optional[str]:
         """
