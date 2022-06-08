@@ -10,7 +10,7 @@ from twitchio.ext import commands
 from utils import Config
 
 if TYPE_CHECKING:
-    from twitchio import Channel, Message, User
+    from twitchio import Channel, Message
 
 
 logger: logzero.logging = logzero.logger
