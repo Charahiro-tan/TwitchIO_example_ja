@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 
 logger: logzero.logging = logzero.logger
 
-__ver__ = "1.0.0"
+__ver__ = "1.0.1"
 
 
 class Bot(commands.Bot):
