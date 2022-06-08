@@ -11,7 +11,7 @@ from twitchio.ext import commands
 
 if TYPE_CHECKING:
     from main import Bot
-    from twitchio import FollowEvent, Message, User
+    from twitchio import FollowEvent, User
 
 logger: logzero.logging = logzero.logger
 
