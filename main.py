@@ -43,13 +43,11 @@ class Bot(commands.Bot):
             if file.endswith(".py")
         ]
 
-    async def event_join(self, channel: Channel, user: User) -> None:
+    async def event_channel_joined(self, channel: Channel) -> None:
         """
         ただの準備完了のお知らせ
-        次のバージョンではevent_channel_joinedができるらしいのでそっちのほうがいいかも
         """
-        if user.name == self.nick:
-            logger.info(f"{channel.name}に接続しました")
+        logger.info(f"{channel.name}に接続しました")
 
     async def event_message(self, message: Message) -> None:
         """
